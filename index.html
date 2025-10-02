@@ -1,41 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>るーちゃんの動画箱</title>
-  <style>
-    body {
-      font-family: 'Hiragino Sans', sans-serif;
-      background: #fdf6f0;
-      color: #333;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 30px;
-      color: #444;
-    }
-    a.button {
-      display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
-      background: #ff8ba0;
-      color: white;
-      text-decoration: none;
-      border-radius: 25px;
-      font-size: 1.2em;
-      transition: 0.3s;
-    }
-    a.button:hover {
-      background: #ff6e87;
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>君だけの動画箱</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>どの気持ちのときに見る？</h1>
-  <a class="button" href="genki.html">元気が欲しいとき</a>
-  <a class="button" href="warai.html">笑いたいとき</a>
-  <a class="button" href="aishite.html">愛してほしいとき</a>
+  <header class="site-header">
+    <h1>どの気持ちのときに見る？</h1>
+    <p class="subtitle">小さな宝箱。いつでも開いてね。</p>
+  </header>
+
+  <main class="grid">
+    <a class="card" href="genki.html">元気が欲しい時</a>
+    <a class="card" href="warai.html">笑いたい時</a>
+    <a class="card" href="aishite.html">愛してほしい時</a>
+    <a class="card" href="nemurenai.html">眠れない時</a>
+    <a class="card" href="sabishii.html">寂しい時</a>
+    <a class="card" href="benkyu.html">勉強に疲れた時</a>
+    <a class="card" href="chousen.html">挑戦の前に</a>
+    <a class="card" href="jibun.html">自分を好きになれない時</a>
+  </main>
+
+  <footer class="site-footer">
+    <p>※動画は限定公開のYouTubeを埋め込んで使ってください。IDを入れ替えるだけでOKです。</p>
+  </footer>
 </body>
 </html>
