@@ -26,3 +26,73 @@ body{
 .video-desc{color:#555;margin-bottom:14px}
 .video-frame{width:100%;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.12)}
 .back{display:inline-block;margin-top:18px;color:var(--accent);text-decoration:none;font-weight:700}
+
+/* =========================================
+   index.html専用 背景アニメーション
+========================================= */
+
+/* 背景用のコンテナ（画面全体に広がる） */
+.animated-background {
+  position: fixed; /* スクロールしても背景は固定 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* 背景がクリックを邪魔しないように */
+  z-index: -1; /* コンテンツの一番後ろへ */
+  overflow: hidden;
+}
+
+/* 漂う光の玉の共通デザイン */
+.bg-shape {
+  position: absolute;
+  border-radius: 50%; /* 完璧な丸 */
+  filter: blur(60px); /* 強くぼかして光のように見せる */
+  opacity: 0.4; /* 半透明 */
+  animation: float 25s infinite alternate ease-in-out; /* ゆっくり動くアニメーションを適用 */
+}
+
+/* 1つ目の光（ピンク系） */
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: #ffcdd2; /* 淡いピンク */
+  top: -10%;
+  left: -10%;
+  animation-delay: 0s; /* すぐ動き始める */
+}
+
+/* 2つ目の光（ベージュ系） */
+.shape-2 {
+  width: 500px;
+  height: 500px;
+  background: #ffe0b2; /* 淡いオレンジベージュ */
+  bottom: -20%;
+  right: -10%;
+  animation-delay: -10s; /* 途中から始まったように見せる */
+  animation-duration: 35s; /* 動きの速さを少し変える */
+}
+
+/* 3つ目の光（薄いアクセントカラー系） */
+.shape-3 {
+  width: 300px;
+  height: 300px;
+  background: #e1bee7; /* 淡い紫ピンク */
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -5s;
+  animation-duration: 30s;
+  opacity: 0.3;
+}
+
+/* 動きの定義（フワフワと漂う） */
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    /* 位置をずらし、少し大きさを変える */
+    transform: translate(100px, 50px) scale(1.1);
+  }
+}
