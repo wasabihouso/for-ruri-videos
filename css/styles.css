@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Zen+Maru+Gothic:wght@500;700&display=swap');
 
 :root {
-  /* 温かみのあるカラーパレット */
+  /* ▼ ここから新しいおしゃれなカラー設定 ▼ */
   --bg-color: #f9f4ef;       /* 優しい生成り色 */
-  --text-main: #5d504b;      /* 黒ではなく濃いブラウンで柔らかく */
+  --text-main: #5d504b;      /* 濃いブラウン */
   --text-sub: #8c807b;       /* 淡いブラウン */
-  --accent: #d48a8a;         /* 落ち着いたダスティピンク */
+  --accent: #d48a8a;         /* ダスティピンク */
   --card-bg: #ffffff;
-  --shadow: 0 4px 20px rgba(93, 80, 75, 0.08); /* 柔らかい影 */
-  --radius: 20px;            /* 角丸の大きさ */
+  --shadow: 0 4px 20px rgba(93, 80, 75, 0.08);
+  --radius: 20px;
 }
 
 * {
@@ -24,14 +24,73 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 共通レイアウト */
+/* =========================================
+   1. 背景アニメーション（ここが動く光の設定）
+========================================= */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1; /* コンテンツの一番後ろへ */
+  overflow: hidden;
+}
+
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+  animation: float 25s infinite alternate ease-in-out;
+}
+
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: #ffcdd2;
+  top: -10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 500px;
+  height: 500px;
+  background: #ffe0b2;
+  bottom: -20%;
+  right: -10%;
+  animation-delay: -10s;
+  animation-duration: 35s;
+}
+
+.shape-3 {
+  width: 300px;
+  height: 300px;
+  background: #e1bee7;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -5s;
+  animation-duration: 30s;
+  opacity: 0.4;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(100px, 50px) scale(1.1); }
+}
+
+/* =========================================
+   2. メインレイアウト（おしゃれ化デザイン）
+========================================= */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* ヘッダー */
 .site-header {
   text-align: center;
   margin-bottom: 40px;
@@ -39,7 +98,7 @@ body {
 }
 
 .site-header h1 {
-  font-family: 'Zen Maru Gothic', sans-serif; /* タイトルは丸文字 */
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--text-main);
@@ -54,7 +113,6 @@ body {
   margin-top: 0;
 }
 
-/* トップページのグリッド */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -82,21 +140,21 @@ body {
   border: 1px solid rgba(255,255,255,0.5);
 }
 
-/* カードのアイコン装飾（絵文字サイズ） */
 .card span {
   font-size: 2rem;
   margin-bottom: 12px;
   display: block;
 }
 
-/* ホバー時の動き */
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 24px rgba(212, 138, 138, 0.15);
   color: var(--accent);
 }
 
-/* 動画ページのデザイン */
+/* =========================================
+   3. 動画ページの設定
+========================================= */
 .video-header {
   text-align: center;
   margin-bottom: 30px;
@@ -120,7 +178,6 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow);
   background: #000;
-  /* 16:9のアスペクト比を維持する現代的な書き方 */
   aspect-ratio: 16 / 9;
   position: relative;
 }
@@ -131,7 +188,6 @@ body {
   border: 0;
 }
 
-/* 戻るボタン */
 .back-link-container {
   text-align: center;
   margin-top: 40px;
@@ -166,10 +222,10 @@ body {
   opacity: 0.6;
 }
 
-/* スマホ向けの微調整 */
+/* スマホ対応 */
 @media (max-width: 480px) {
   .grid {
-    grid-template-columns: 1fr 1fr; /* スマホでは2列に */
+    grid-template-columns: 1fr 1fr;
     gap: 15px;
   }
   .card {
