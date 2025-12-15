@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Zen+Maru+Gothic:wght@500;700&display=swap');
 
 :root {
-  /* ▼ ここから新しいおしゃれなカラー設定 ▼ */
-  --bg-color: #f9f4ef;       /* 優しい生成り色 */
+  /* ベースカラー */
+  --bg-color: #fcf9f4;       /* 背景は少し明るく */
   --text-main: #5d504b;      /* 濃いブラウン */
   --text-sub: #8c807b;       /* 淡いブラウン */
-  --accent: #d48a8a;         /* ダスティピンク */
-  --card-bg: #ffffff;
-  --shadow: 0 4px 20px rgba(93, 80, 75, 0.08);
-  --radius: 20px;
+  --accent: #d48a8a;         /* ピンクのアクセント */
+  
+  /* カードのデザイン強化 */
+  --card-bg: rgba(255, 255, 255, 0.95); /* 少し透け感をなくしてくっきりさせる */
+  --shadow: 0 10px 25px rgba(100, 80, 75, 0.1); /* 影を少し濃くして浮遊感をアップ */
+  --radius: 24px;            /* 丸みを少し強く */
 }
 
 * {
@@ -25,7 +27,7 @@ body {
 }
 
 /* =========================================
-   1. 背景アニメーション（ここが動く光の設定）
+   1. 背景アニメーション（オーロラグラデーション）
 ========================================= */
 .animated-background {
   position: fixed;
@@ -34,56 +36,60 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: -1; /* コンテンツの一番後ろへ */
+  z-index: -1;
   overflow: hidden;
+  background: #fdfbf7; /* ベースの背景色 */
 }
 
 .bg-shape {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.5;
-  animation: float 25s infinite alternate ease-in-out;
+  filter: blur(80px); /* ぼかしを強くして光を広げる */
+  opacity: 0.8;       /* 透明度を下げて、色をしっかり見せる */
+  animation: float 20s infinite alternate ease-in-out;
 }
 
+/* 1つ目：温かいピンク〜オレンジのグラデーション */
 .shape-1 {
-  width: 400px;
-  height: 400px;
-  background: #ffcdd2;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
   top: -10%;
   left: -10%;
   animation-delay: 0s;
 }
 
+/* 2つ目：優しい紫〜ピンクのグラデーション */
 .shape-2 {
-  width: 500px;
-  height: 500px;
-  background: #ffe0b2;
-  bottom: -20%;
-  right: -10%;
-  animation-delay: -10s;
-  animation-duration: 35s;
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  bottom: -10%;
+  right: -20%;
+  animation-delay: -5s;
+  animation-duration: 25s;
 }
 
+/* 3つ目：爽やかな空色（アクセント） */
 .shape-3 {
-  width: 300px;
-  height: 300px;
-  background: #e1bee7;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation-delay: -5s;
+  opacity: 0.6; /* 青系は少し控えめに */
+  animation-delay: -10s;
   animation-duration: 30s;
-  opacity: 0.4;
 }
 
 @keyframes float {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(100px, 50px) scale(1.1); }
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { transform: translate(50px, 30px) scale(1.1) rotate(10deg); }
 }
 
 /* =========================================
-   2. メインレイアウト（おしゃれ化デザイン）
+   2. メインレイアウト
 ========================================= */
 .container {
   max-width: 800px;
@@ -93,24 +99,30 @@ body {
 
 .site-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   padding-top: 20px;
+  position: relative;
 }
 
 .site-header h1 {
   font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text-main);
   letter-spacing: 0.05em;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 0px rgba(255,255,255,0.8); /* 文字が背景に埋もれないよう白縁取り */
 }
 
 .subtitle {
   font-family: 'Zen Maru Gothic', sans-serif;
   color: var(--text-sub);
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-top: 0;
+  background: rgba(255,255,255,0.6); /* 文字の後ろに薄い白を敷く */
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
 }
 
 .grid {
@@ -137,19 +149,24 @@ body {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 2px solid rgba(255, 255, 255, 0.6); /* 白い縁取りでくっきりさせる */
 }
 
 .card span {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 12px;
   display: block;
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(212, 138, 138, 0.15);
-  color: var(--accent);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(212, 138, 138, 0.25); /* ホバー時の影に色をつける */
+  border-color: var(--accent);
+}
+
+.card:hover span {
+  transform: scale(1.1); /* ホバー時にアイコンが少し大きくなる */
 }
 
 /* =========================================
@@ -162,7 +179,7 @@ body {
 
 .video-title {
   font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--text-main);
   margin-bottom: 8px;
 }
@@ -180,6 +197,7 @@ body {
   background: #000;
   aspect-ratio: 16 / 9;
   position: relative;
+  border: 4px solid #fff; /* 動画の周りに白いフレームをつけて写真風に */
 }
 
 .video-frame iframe {
@@ -196,22 +214,23 @@ body {
 .back {
   display: inline-flex;
   align-items: center;
-  padding: 12px 24px;
+  padding: 14px 28px;
   background: #fff;
   border-radius: 50px;
   color: var(--text-main);
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
+  font-family: 'Zen Maru Gothic', sans-serif;
 }
 
 .back:hover {
   background: var(--accent);
   color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 138, 138, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(212, 138, 138, 0.4);
 }
 
 .site-footer {
@@ -219,7 +238,7 @@ body {
   padding: 40px;
   color: var(--text-sub);
   font-size: 0.8rem;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 /* スマホ対応 */
@@ -230,9 +249,9 @@ body {
   }
   .card {
     padding: 20px 10px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
   .card span {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 }
