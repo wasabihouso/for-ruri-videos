@@ -1,16 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Zen+Maru+Gothic:wght@500;700&display=swap');
 
 :root {
-  /* ベースカラー */
-  --bg-color: #fcf9f4;       /* 背景は少し明るく */
-  --text-main: #5d504b;      /* 濃いブラウン */
-  --text-sub: #8c807b;       /* 淡いブラウン */
-  --accent: #d48a8a;         /* ピンクのアクセント */
-  
-  /* カードのデザイン強化 */
-  --card-bg: rgba(255, 255, 255, 0.95); /* 少し透け感をなくしてくっきりさせる */
-  --shadow: 0 10px 25px rgba(100, 80, 75, 0.1); /* 影を少し濃くして浮遊感をアップ */
-  --radius: 24px;            /* 丸みを少し強く */
+  --bg-color: #fcf9f4;
+  --text-main: #5d504b;
+  --text-sub: #8c807b;
+  --accent: #d48a8a;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --shadow: 0 10px 25px rgba(100, 80, 75, 0.1);
+  --radius: 24px;
 }
 
 * {
@@ -38,18 +35,17 @@ body {
   pointer-events: none;
   z-index: -1;
   overflow: hidden;
-  background: #fdfbf7; /* ベースの背景色 */
+  background: #fdfbf7;
 }
 
 .bg-shape {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px); /* ぼかしを強くして光を広げる */
-  opacity: 0.8;       /* 透明度を下げて、色をしっかり見せる */
+  filter: blur(80px);
+  opacity: 0.8;
   animation: float 20s infinite alternate ease-in-out;
 }
 
-/* 1つ目：温かいピンク〜オレンジのグラデーション */
 .shape-1 {
   width: 500px;
   height: 500px;
@@ -59,7 +55,6 @@ body {
   animation-delay: 0s;
 }
 
-/* 2つ目：優しい紫〜ピンクのグラデーション */
 .shape-2 {
   width: 600px;
   height: 600px;
@@ -70,7 +65,6 @@ body {
   animation-duration: 25s;
 }
 
-/* 3つ目：爽やかな空色（アクセント） */
 .shape-3 {
   width: 400px;
   height: 400px;
@@ -78,7 +72,7 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.6; /* 青系は少し控えめに */
+  opacity: 0.6;
   animation-delay: -10s;
   animation-duration: 30s;
 }
@@ -111,7 +105,7 @@ body {
   color: var(--text-main);
   letter-spacing: 0.05em;
   margin-bottom: 10px;
-  text-shadow: 2px 2px 0px rgba(255,255,255,0.8); /* 文字が背景に埋もれないよう白縁取り */
+  text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
 }
 
 .subtitle {
@@ -119,7 +113,7 @@ body {
   color: var(--text-sub);
   font-size: 1rem;
   margin-top: 0;
-  background: rgba(255,255,255,0.6); /* 文字の後ろに薄い白を敷く */
+  background: rgba(255,255,255,0.6);
   display: inline-block;
   padding: 4px 12px;
   border-radius: 20px;
@@ -149,7 +143,7 @@ body {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.6); /* 白い縁取りでくっきりさせる */
+  border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .card span {
@@ -161,12 +155,22 @@ body {
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(212, 138, 138, 0.25); /* ホバー時の影に色をつける */
+  box-shadow: 0 15px 30px rgba(212, 138, 138, 0.25);
   border-color: var(--accent);
 }
 
 .card:hover span {
-  transform: scale(1.1); /* ホバー時にアイコンが少し大きくなる */
+  transform: scale(1.1);
+}
+
+/* カード内の日付表示 */
+.card-date {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-sub);
+  margin-top: 6px;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 /* =========================================
@@ -197,7 +201,7 @@ body {
   background: #000;
   aspect-ratio: 16 / 9;
   position: relative;
-  border: 4px solid #fff; /* 動画の周りに白いフレームをつけて写真風に */
+  border: 4px solid #fff;
 }
 
 .video-frame iframe {
@@ -206,6 +210,27 @@ body {
   border: 0;
 }
 
+/* =========================================
+   4. 複数動画表示（旅行ページ用）
+========================================= */
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.video-item-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 14px;
+  padding-left: 4px;
+}
+
+/* =========================================
+   5. ナビゲーション
+========================================= */
 .back-link-container {
   text-align: center;
   margin-top: 40px;
@@ -241,7 +266,9 @@ body {
   opacity: 0.8;
 }
 
-/* スマホ対応 */
+/* =========================================
+   6. スマホ対応
+========================================= */
 @media (max-width: 480px) {
   .grid {
     grid-template-columns: 1fr 1fr;
@@ -253,5 +280,11 @@ body {
   }
   .card span {
     font-size: 2rem;
+  }
+  .video-list {
+    gap: 30px;
+  }
+  .video-item-title {
+    font-size: 0.95rem;
   }
 }
